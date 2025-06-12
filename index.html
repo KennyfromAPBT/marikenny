@@ -12,17 +12,46 @@
       height: 100%;
       overflow: hidden;
     }
+
     video {
       width: 100vw;
       height: 100vh;
       object-fit: cover;
-      pointer-events: none; /* 조작 불가, UI 클릭 방지 */
+    }
+
+    #unmute-btn {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      font-size: 18px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      z-index: 10;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <video autoplay playsinline muted loop>
+  <video id="wedding-video" autoplay muted playsinline>
     <source src="marikenny_compressed.mp4" type="video/mp4" />
   </video>
+
+  <button id="unmute-btn">🔊 사운드 켜기</button>
+
+  <script>
+    const video = document.getElementById('wedding-video');
+    const btn = document.getElementById('unmute-btn');
+
+    btn.addEventListener('click', () => {
+      video.muted = false;
+      video.volume = 1;
+      video.play(); // 재생 보장
+      btn.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
