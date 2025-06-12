@@ -16,14 +16,13 @@
       width: 100vw;
       height: 100vh;
       object-fit: cover;
-      pointer-events: none; /* 터치 방지 (선택 사항) */
+      pointer-events: none; /* 조작 불가, UI 클릭 방지 */
     }
   </style>
 </head>
 <body>
-  <video autoplay playsinline muted>
+  <video autoplay playsinline muted loop>
     <source src="marikenny_compressed.mp4" type="video/mp4" />
-    브라우저가 video 태그를 지원하지 않습니다.
   </video>
 </body>
 </html>
