@@ -4,11 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wedding Video</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      background: white;
+      background: black;
       height: 100%;
       overflow: hidden;
     }
@@ -19,38 +20,53 @@
       object-fit: cover;
     }
 
-    #unmute-btn {
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 1,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48;
+      font-size: 36px;
+    }
+
+    #sound-toggle {
       position: absolute;
-      top: 45%;
+      top: 60%; /* ⬇ 약간 아래 */
       left: 50%;
       transform: translate(-50%, -50%);
-      background: rgba(255, 255, 255, 0.6);
+      background: rgba(0, 0, 0, 0.6);
       color: white;
-      font-size: 18px;
-      padding: 12px 24px;
       border: none;
-      border-radius: 8px;
+      border-radius: 100px;
+      padding: 14px;
       z-index: 10;
       cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    #sound-toggle:hover {
+      background: rgba(0, 0, 0, 0.8);
     }
   </style>
 </head>
 <body>
-  <video id="wedding-video" autoplay muted playsinline>
+  <video id="wedding-video" autoplay muted playsinline loop>
     <source src="marikenny_compressed.mp4" type="video/mp4" />
   </video>
 
-  <button id="unmute-btn">🔊</button>
+  <button id="sound-toggle">
+    <span class="material-symbols-outlined" id="sound-icon">volume_off</span>
+  </button>
 
   <script>
     const video = document.getElementById('wedding-video');
-    const btn = document.getElementById('unmute-btn');
+    const btn = document.getElementById('sound-toggle');
+    const icon = document.getElementById('sound-icon');
 
     btn.addEventListener('click', () => {
-      video.muted = false;
-      video.volume = 1;
-      video.play(); // 재생 보장
-      btn.style.display = 'none';
+      video.muted = !video.muted;
+      video.volume = video.muted ? 0 : 1;
+      icon.textContent = video.muted ? 'volume_off' : 'volume_up';
     });
   </script>
 </body>
