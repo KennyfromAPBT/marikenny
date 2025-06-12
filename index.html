@@ -1,14 +1,29 @@
 <!DOCTYPE html>
-<html>
-  <body style="margin:0;">
-    <video
-      autoplay
-      playsinline
-      controls
-      muted
-      style="width:100%; height:100vh; object-fit:cover;"
-    >
-      <source src="marikenny_compressed.mp4" type="video/mp4" />
-    </video>
-  </body>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Video</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      height: 100%;
+      overflow: hidden;
+    }
+    video {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      pointer-events: none; /* 터치 방지 (선택 사항) */
+    }
+  </style>
+</head>
+<body>
+  <video autoplay playsinline muted>
+    <source src="marikenny_compressed.mp4" type="video/mp4" />
+    브라우저가 video 태그를 지원하지 않습니다.
+  </video>
+</body>
 </html>
